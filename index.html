@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TicketEase - Ticket Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <h1>TicketEase</h1>
+        <div class="header-actions">
+            <input id="searchInput" type="search" placeholder="Search tickets..." aria-label="Search tickets">
+            <select id="statusFilter" aria-label="Filter by status">
+                <option value="all">All</option>
+                <option value="open">Open</option>
+                <option value="in_progress">In Progress</option>
+                <option value="closed">Closed</option>
+            </select>
+            <button id="clearAll" class="danger" title="Delete all tickets">Clear All</button>
+        </div>
+    </header>
+
+    <main class="layout">
+        <section class="new-ticket">
+            <h2>Create Ticket</h2>
+            <form id="ticketForm">
+                <div class="form-row">
+                    <label for="title">Title</label>
+                    <input id="title" name="title" type="text" required maxlength="120" placeholder="Short summary">
+                </div>
+                <div class="form-row">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="4" required placeholder="Describe the issue"></textarea>
+                </div>
+                <div class="form-row">
+                    <label for="priority">Priority</label>
+                    <select id="priority" name="priority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <button type="submit" class="primary">Add Ticket</button>
+            </form>
+        </section>
+
+        <section class="tickets">
+            <h2>Tickets</h2>
+            <ul id="ticketList" class="ticket-list" aria-live="polite"></ul>
+        </section>
+    </main>
+
+    <template id="ticketItemTemplate">
+        <li class="ticket-item" data-id="">
+            <div class="ticket-main">
+                <div class="ticket-title"></div>
+                <div class="ticket-meta">
+                    <span class="badge priority"></span>
+                    <span class="badge status"></span>
+                    <span class="created"></span>
+                </div>
+            </div>
+            <div class="ticket-desc"></div>
+            <div class="ticket-actions">
+                <select class="status-select" aria-label="Change status">
+                    <option value="open">Open</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="closed">Closed</option>
+                </select>
+                <button class="danger delete-btn">Delete</button>
+            </div>
+        </li>
+    </template>
+
+    <script src="app.js"></script>
+    
+</body>
+</html>
+
+
