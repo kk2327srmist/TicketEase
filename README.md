@@ -1,0 +1,1 @@
+TicketEase is a simple web-based ticket management system to capture issues, set priority, and track status (Open, In Progress, Closed). It includes fast search and status filtering, and persists data in the browser via localStorage. Built with HTML, CSS, and JavaScript.
